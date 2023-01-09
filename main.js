@@ -9,19 +9,22 @@ let teams = [];
 async function matchPage(url){
     // let browser =  new wd.Builder().forBrowser('chrome').build();
     await browser.get(url);
-    await browser.wait(wd.until.elementsLocated(wd.By.css("a.cb-nav-tab ")));
+    // await browser.wait(wd.until.elementsLocated(wd.By.css("a.cb-nav-tab")));
     //team name
-    let heading = await browser.findElements(wd.By.css(".cb-nav-hdr.cb-font-18.line-ht24>"));
-    let headingContent = await heading.getAttribute("innerText");
-    headingContent = headingContent.split(",");
-    let TwoTeamNames = headingContent.split("vs").trim();
-    console.log(TwoTeamNames);
+    // browser.wait(wd.until.elementsLocated(wd.By.css(".cb-nav-hdr.cb-font-18.line-ht24")))
+    // let heading = await browser.findElement(wd.By.css(".cb-nav-hdr.cb-font-18.line-ht24"));
+    // let headingContent = await heading.getAttribute("innerText");
+    // // console.log(headingContent);
+    // headingContent = headingContent.split(",");
+    // let TwoTeamNames = headingContent[0].split("vs");
+    // console.log(TwoTeamNames);
     //scorecard page
 
-    
+    await browser.wait(wd.until.elementsLocated(wd.By.css(".cb-nav-tab")));
     let navLinks = await browser.findElements(wd.By.css("a.cb-nav-tab "));
     let scoreCardUrl = await navLinks[1].getAttribute("href");
     // await browser.get(scoreCardUrl);
+    browser.get(scoreCardUrl);
 
 }
 
